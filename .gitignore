@@ -1,0 +1,48 @@
+# dependencies
+**/node_modules
+# roadhog-api-doc ignore
+/frontend/src/utils/request-temp.js
+_roadhog-api-doc
+
+# production
+/frontend/dist
+.vscode
+
+# misc
+.DS_Store
+npm-debug.log*
+yarn-error.log
+
+/coverage
+.idea
+/frontend/yarn.lock
+/frontend/package-lock.json
+*bak
+
+# visual studio code
+.history
+*.log
+
+functions/mock
+/frontend/.temp/**
+
+# umi
+/frontend/.umi
+/frontend/.umi-production
+
+# screenshot
+screenshot
+/frontend/.firebase
+
+# python
+*.cpython-36.pyc
+*.sqlite3
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# media
+/backend/media/card/*
