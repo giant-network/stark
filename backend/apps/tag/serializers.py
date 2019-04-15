@@ -32,7 +32,8 @@ class CardSerializer(serializers.ModelSerializer):
     def get_avatar(self, obj):
         request = self.context.get('request')
         avatar_url = obj.picture.url
-        return request.build_absolute_uri(avatar_url)
+        # return request.build_absolute_uri(avatar_url)
+        return avatar_url
 
 
 class TagNestedSerializer(serializers.ModelSerializer):
