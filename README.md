@@ -102,7 +102,7 @@ docker run --name stark-frontend -p 8001:8088 -d stark:frontend1.0
 ```
 通过nginx代理访问前端和后端服务器,最后访问代理服务器 http://xxx.xxx.xxx.xx:8001就可以看到啦
 
-#### 如何使用
+### 如何使用
 ###### 管理员角色
 数据模型分为三个
 > - 标签（网址类别）
@@ -110,6 +110,9 @@ docker run --name stark-frontend -p 8001:8088 -d stark:frontend1.0
 > - 卡片菜单 （网址的不同入口，如测试环境、生产环境等）
 
 管理员通过http://xxx.xxx.xxx.xx:8001/admin/management/ 访问后台管理系统，添加数据。  
+
+![image](https://github.com/giant-network/stark/blob/master/frontend/public/admin.jpg)
+
 前台查看新增的网址信息
 
 ###### 普通用户
