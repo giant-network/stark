@@ -27,8 +27,7 @@ functions/mock
 /frontend/.temp/**
 
 # umi
-/frontend/.umi
-/frontend/.umi-production
+frontend/src/pages/.umi/*
 
 # screenshot
 screenshot
