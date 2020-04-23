@@ -17,12 +17,38 @@ backend/settings路径中对应的环境配置，配置mysql连接。
 ```
 python manage.py migrate
 ```
+> 注意，docker方式部署直接用sqlite做数据库，数据量不大，为你省去配置数据库的麻烦。
 2. 前端react，使用ant-design的前端框架  
 
 
 #### 如何部署
-##### 直接部署
+##### Docker部署
+> 强烈推荐!
+##### 1. 直接去docker hub 拉取镜像跑容器
+拉取镜像:
+```
+docker pull felixglow/stark:V1.0
+```
+启动容器：
 
+```
+docker run  -p 8818:8080 -d felixglow/stark:V1.0
+```
+最后访问代理服务器 http://xxx.xxx.xxx.xx:8818 （部署服务器的公网IP加8818端口）就可以看到啦  
+
+##### 2. 自己构建镜像
+如果需要改动代码，如底部链接，标题描述等
+改完代码，项目主目录构建镜像
+```
+docker build -t stark:V1.0 .
+```
+启动容器
+```
+docker run  -p 8818:8080 -d stark:V1.0
+```
+与docker hub方式一样，同样访问 http://xxx.xxx.xxx.xx:8818 
+
+##### 3. 直接部署
 
 1. 后端在backend/路径下执行 
 ```
@@ -76,31 +102,6 @@ server {
     }
 }
 ```
-##### Docker部署
-数据库需要自己事先创建好
-###### 1. 后端
-
-在backend路径构建镜像:
-```
-docker build -t stark:backend1.0 .
-```
-启动后端镜像，示例：
-
-```
-docker run -e 'ENV=dev' -p 8080:8080 -v /home/data/stark/media:/stark/media/ -d stark:backend1.0
-```
-###### 2. 前端
-
-在frontend路径构建镜像：
-```
-docker build -t stark:frontend1.0 .
-```
-启动前端镜像，示例：
-
-```
-docker run --name stark-frontend -p 8001:8088 -d stark:frontend1.0
-```
-通过nginx代理访问前端和后端服务器,最后访问代理服务器 http://xxx.xxx.xxx.xx:8001就可以看到啦
 
 ### 如何使用
 ###### 管理员角色
@@ -109,7 +110,7 @@ docker run --name stark-frontend -p 8001:8088 -d stark:frontend1.0
 > - 卡片（网址信息）
 > - 卡片菜单 （网址的不同入口，如测试环境、生产环境等）
 
-管理员通过http://xxx.xxx.xxx.xx:8001/admin/management/ 访问后台管理系统，添加数据。  
+管理员通过http://部署的访问地址/admin/management/ （例如http://xxx.xxx.xxx.xx:8818/admin/management/ ）访问后台管理系统，添加数据。  
 
 ![image](https://github.com/giant-network/stark/blob/master/frontend/public/admin.jpg)
 
