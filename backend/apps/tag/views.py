@@ -12,7 +12,7 @@ from rest_framework.decorators import detail_route, list_route
 
 
 class TagViewSet(BaseViewSet):
-    queryset = Tag.objects.filter(is_deleted=False).order_by('-weight')
+    queryset = Tag.objects.filter(is_deleted=False).order_by('-weight', '-id')
     serializer_class = TagSerializer
     http_method_names = ['get']
 

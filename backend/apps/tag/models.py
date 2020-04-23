@@ -15,6 +15,6 @@ class Tag(BaseModel):
         return self.name
 
     class Meta:
-        verbose_name = "标签"
+        verbose_name = "顶部Tab标签"
         verbose_name_plural = verbose_name
         ordering = ['-weight']

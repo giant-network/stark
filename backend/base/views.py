@@ -56,31 +56,31 @@ class BaseViewSet(ModelViewSet):
     pagination_class = CustomLimitOffsetPagination
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
 
-    @list_route(methods=['post'], url_path='find')
-    def find(self, request, *args, **kwargs):
-        """
-        批量查询，支持id与name字段的批量查询
-        :param request:
-        :param args:
-        :param kwargs:
-        :return:
-        """
-        data = request.data
-        filter_data = {}
-        for field in self.filter_fields:
-            value = data.pop(field, None)
-            if value:
-                filter_data[field] = value
-
-        ids = data.pop('id', None)
-        if ids:
-            self.queryset = self.get_queryset().filter(id__in=ids)
-
-        names = data.pop('name', None)
-        if names:
-            self.queryset = self.get_queryset().filter(name__in=names)
-
-        return self.list(request, *args, **kwargs)
+    # @list_route(methods=['post'], url_path='find')
+    # def find(self, request, *args, **kwargs):
+    #     """
+    #     批量查询，支持id与name字段的批量查询
+    #     :param request:
+    #     :param args:
+    #     :param kwargs:
+    #     :return:
+    #     """
+    #     data = request.data
+    #     filter_data = {}
+    #     for field in self.filter_fields:
+    #         value = data.pop(field, None)
+    #         if value:
+    #             filter_data[field] = value
+    #
+    #     ids = data.pop('id', None)
+    #     if ids:
+    #         self.queryset = self.get_queryset().filter(id__in=ids)
+    #
+    #     names = data.pop('name', None)
+    #     if names:
+    #         self.queryset = self.get_queryset().filter(name__in=names)
+    #
+    #     return self.list(request, *args, **kwargs)
 
     def get_object(self):
         queryset = self.filter_queryset(self.get_queryset())

@@ -14,7 +14,7 @@ app.use(createLoading());
   app.use(plugin);
 });
 
-app.model({ namespace: 'global', ...(require('/Users/felix/giant/stark/frontend/src/models/global.js').default) });
-app.model({ namespace: 'list', ...(require('/Users/felix/giant/stark/frontend/src/models/list.js').default) });
-app.model({ namespace: 'menu', ...(require('/Users/felix/giant/stark/frontend/src/models/menu.js').default) });
-app.model({ namespace: 'setting', ...(require('/Users/felix/giant/stark/frontend/src/models/setting.js').default) });
+app.model({ namespace: 'global', ...(require('/Users/felix/3myproject/stark/frontend/src/models/global.js').default) });
+app.model({ namespace: 'list', ...(require('/Users/felix/3myproject/stark/frontend/src/models/list.js').default) });
+app.model({ namespace: 'menu', ...(require('/Users/felix/3myproject/stark/frontend/src/models/menu.js').default) });
+app.model({ namespace: 'setting', ...(require('/Users/felix/3myproject/stark/frontend/src/models/setting.js').default) });

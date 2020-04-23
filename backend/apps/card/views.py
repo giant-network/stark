@@ -18,7 +18,7 @@ class CardViewSet(BaseViewSet):
     card列表
     """
 
-    queryset = Card.objects.filter(is_deleted=False).order_by('-weight')
+    queryset = Card.objects.filter(is_deleted=False).order_by('-weight', '-id')
     serializer_class = CardSerializer
     http_method_names = ['get']
 
@@ -44,7 +44,7 @@ class CardViewSet(BaseViewSet):
         """
         instance = self.get_object()
 
-        menus = instance.menus.filter(is_deleted=False).order_by('-weight')
+        menus = instance.menus.filter(is_deleted=False).order_by('-weight', '-id')
         serializer = MenuSerializer(menus, many=True)
         return Response(serializer.data)
 
@@ -56,7 +56,7 @@ class CardViewSet(BaseViewSet):
 
         q = request.query_params.get('q', '')
 
-        cards = Card.objects.filter(Q(name__icontains=q) | Q(description__icontains=q), is_deleted=False).order_by('-weight')
+        cards = Card.objects.filter(Q(name__icontains=q) | Q(description__icontains=q), is_deleted=False).order_by('-weight', '-id')
         serializer = CardSerializer(cards, many=True, context={"request": request})
         return Response(serializer.data)
 
@@ -75,7 +75,7 @@ class CardViewSet(BaseViewSet):
         finally:
             ids_list = ids_value if type(ids_value) == list else []
 
-        cards = Card.objects.filter(id__in=ids_list, is_deleted=False).order_by('-weight')
+        cards = Card.objects.filter(id__in=ids_list, is_deleted=False).order_by('-weight', '-id')
         serializer = CardSerializer(cards, many=True, context={"request": request})
         return Response(serializer.data)
 
@@ -85,7 +85,7 @@ class MenuViewSet(BaseViewSet):
     子菜单列表
     """
 
-    queryset = Menu.objects.filter(is_deleted=False)
+    queryset = Menu.objects.filter(is_deleted=False).order_by('-weight', '-id')
     serializer_class = MenuSerializer
     http_method_names = ['get']
 

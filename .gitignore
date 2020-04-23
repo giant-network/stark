@@ -45,3 +45,6 @@ __pycache__/
 
 # media
 /backend/media/card/*
+
+# virtualenv
+/backend/env

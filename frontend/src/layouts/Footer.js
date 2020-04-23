@@ -16,7 +16,7 @@ const FooterView = () => (
         {
           key: 'github',
           title: <Icon type="github" />,
-          href: 'https://github.com/ant-design/ant-design-pro',
+          href: 'https://github.com',
           blankTarget: true,
         },
         {

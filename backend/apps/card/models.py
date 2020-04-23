@@ -23,7 +23,7 @@ class Card(BaseModel):
     class Meta:
         verbose_name = "导航卡片"
         verbose_name_plural = verbose_name
-        ordering = ['-weight']
+        ordering = ['-weight', '-id']
 
 
 class Menu(BaseModel):
