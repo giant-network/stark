@@ -110,7 +110,8 @@ server {
 > - 卡片（网址信息）
 > - 卡片菜单 （网址的不同入口，如测试环境、生产环境等）
 
-管理员通过http://部署的访问地址/admin/management/ （例如http://xxx.xxx.xxx.xx:8818/admin/management/ ）访问后台管理系统，添加数据。  
+管理员通过http://部署的访问地址/admin/management/ （例如http://xxx.xxx.xxx.xx:8818/admin/management/ ）访问后台管理系统，添加数据。
+> 注意：docker方式部署，后端访问密码默认为：giant123  
 
 ![image](https://github.com/giant-network/stark/blob/master/frontend/public/admin.jpg)
 

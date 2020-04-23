@@ -24,17 +24,12 @@ from django.contrib import admin
 from django.views.static import serve
 from django.urls import include, path
 
-from rest_framework_swagger.views import get_swagger_view
-
 admin.site.site_header = u'Stark Dashboard 后台管理'
 admin.site.site_title = u'Stark Dashboard'
 admin.site.index_title = u'Stark Dashboard'
 
-schema_view = get_swagger_view(title='Stark Dashboard API')
-
 urlpatterns = [
     url(r'^admin/management/', admin.site.urls),
-    path('doc', schema_view),
     path('api/card/', include('apps.card.urls'), name="card"),
     path('api/tag/', include('apps.tag.urls'), name="tag")
 ]

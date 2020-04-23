@@ -3,7 +3,6 @@
 # Created on 2019/3/29, by felix
 #
 
-from django_filters.rest_framework import DjangoFilterBackend
 from collections import OrderedDict
 from rest_framework import status
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -54,7 +53,7 @@ class CustomLimitOffsetPagination(LimitOffsetPagination):
 
 class BaseViewSet(ModelViewSet):
     pagination_class = CustomLimitOffsetPagination
-    filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
+    filter_backends = (SearchFilter, OrderingFilter)
 
     # @list_route(methods=['post'], url_path='find')
     # def find(self, request, *args, **kwargs):
