@@ -33,7 +33,7 @@ class Menu(BaseModel):
     card = models.ForeignKey(Card, on_delete=models.SET_NULL, verbose_name="卡片", null=True, related_name='menus')
 
     def __str__(self):
-        return self.name
+        return self.card.name + ' ' + self.name
 
     class Meta:
         verbose_name = "卡片底部菜单"

@@ -95,7 +95,7 @@ class CardList extends PureComponent {
 
     const content = (
       <div className={styles.pageHeaderContent}>
-        <p>Stark 集合了巨人所有站点的入口，提供一站式的便捷访问，快试试把他设为你的主页吧。</p>
+        <p>Stark 集合了众多站点的入口，提供一站式的便捷访问，快试试把他设为你的主页吧。</p>
       </div>
     );
 

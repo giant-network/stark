@@ -8,9 +8,9 @@ const FooterView = () => (
     <GlobalFooter
       links={[
         {
-          key: '巨人网络',
-          title: '巨人网络',
-          href: 'http://www.ztgame.com/',
+          key: '谷歌',
+          title: '谷歌搜索',
+          href: 'https://www.google.com',
           blankTarget: true,
         },
         {
@@ -20,15 +20,15 @@ const FooterView = () => (
           blankTarget: true,
         },
         {
-          key: '加入巨人',
-          title: '加入巨人',
-          href: 'http://hr.ztgame.com/',
+          key: 'Stack',
+          title: 'Stack Overflow',
+          href: 'https://stackoverflow.com',
           blankTarget: true,
         },
       ]}
       copyright={
         <Fragment>
-          Copyright <Icon type="copyright" /> 2019 巨人网络技术保障部出品
+          Copyright <Icon type="copyright" /> 元气满满部出品
         </Fragment>
       }
     />

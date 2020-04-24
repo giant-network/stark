@@ -30,7 +30,8 @@ const links = [
 
 const copyright = (
   <Fragment>
-    Copyright <Icon type="copyright" /> 2019 巨人网络技术保障部出品
+    {/*Copyright <Icon type="copyright" /> 2019 巨人网络技术保障部出品*/}
+    今天也是元气满满的一天呢
   </Fragment>
 );
 

@@ -21,9 +21,12 @@ class CardAdmin(admin.ModelAdmin):
 
 
 class MenuAdmin(admin.ModelAdmin):
-    list_display = ('name', 'get_card_name', 'weight', 'link', 'is_deleted', 'created_time')
+    list_display = ('get_name', 'get_card_name', 'weight', 'link', 'is_deleted', 'created_time')
     search_fields = ['card__name', 'name']
     ordering = ['-created_time']
+
+    def get_name(self, obj):
+        return obj.card.name + '-' + obj.name
 
     def get_card_name(self, obj):
         return obj.card.name
