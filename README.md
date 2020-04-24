@@ -9,36 +9,25 @@
 ---
 ![image](https://github.com/giant-network/stark/blob/master/frontend/public/nav.jpg)
 
-### 使用：
+### 快速开始：
+> 强烈推荐!  
 
-1. 后端使用python，web框架使用django。  
-backend/settings路径中对应的环境配置，配置mysql连接。  
-初始化数据库表执行:
-```
-python manage.py migrate
-```
-> 注意，docker方式部署直接用sqlite做数据库，数据量不大，为你省去配置数据库的麻烦。
-2. 前端react，使用ant-design的前端框架  
-
-
-#### 如何部署
-##### Docker部署
-> 强烈推荐!
-##### 1. 直接去docker hub 拉取镜像跑容器
-拉取镜像:
-```
-docker pull felixglow/stark:V1.0
-```
-启动容器：
+直接去docker hub 拉取镜像跑容器  
+拉取镜像，启动容器：
 
 ```
 docker run  -p 8818:8080 -d felixglow/stark:V1.0
 ```
-最后访问代理服务器 http://xxx.xxx.xxx.xx:8818 （部署服务器的公网IP加8818端口）就可以看到啦  
+最后访问代理服务器 http://xxx.xxx.xxx.xx:8818 （部署服务器的公网IP加8818端口）就可以看到啦   
+后端访问密码默认为：giant123   
 
-##### 2. 自己构建镜像
-如果需要改动代码，如底部链接，标题描述等
-改完代码，项目主目录构建镜像
+> 注意，docker方式部署直接用sqlite做数据库，数据量不大，为你省去配置数据库的麻烦。
+
+#### 其他方式部署
+##### Docker部署
+##### 1. 自己构建镜像
+如果需要改动代码
+改完代码，项目主目录构建镜像（前端代码需要编译，npm run build）
 ```
 docker build -t stark:V1.0 .
 ```
@@ -48,7 +37,12 @@ docker run  -p 8818:8080 -d stark:V1.0
 ```
 与docker hub方式一样，同样访问 http://xxx.xxx.xxx.xx:8818 
 
-##### 3. 直接部署
+##### 2. 直接部署
+backend/settings路径中对应的环境配置，配置mysql连接。  
+初始化数据库表执行:
+```
+python manage.py migrate
+```
 
 1. 后端在backend/路径下执行 
 ```
@@ -102,6 +96,9 @@ server {
     }
 }
 ```
+### 技术栈
+1. 后端使用python，web框架使用django。  
+2. 前端react，使用ant-design的前端框架  
 
 ### 如何使用
 ###### 管理员角色
