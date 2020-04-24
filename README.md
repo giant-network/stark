@@ -7,8 +7,6 @@
 > - [x] 针对单个用户的网址收藏，免登陆。
 
 ---
-![image](https://github.com/giant-network/stark/blob/master/frontend/public/nav.jpg)
-
 ### 快速开始：
 > 强烈推荐!  
 
@@ -22,6 +20,11 @@ docker run  -p 8818:8080 -d felixglow/stark:V1.0
 后端访问密码默认为：giant123   
 
 > 注意，docker方式部署直接用sqlite做数据库，数据量不大，为你省去配置数据库的麻烦。
+
+---
+
+![image](https://github.com/giant-network/stark/blob/master/frontend/public/nav.jpg)
+
 
 #### 其他方式部署
 ##### Docker部署
