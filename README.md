@@ -17,7 +17,8 @@
 docker run  -p 8818:8080 -d felixglow/stark:V1.0
 ```
 最后访问代理服务器 http://xxx.xxx.xxx.xx:8818 （部署服务器的公网IP加8818端口）就可以看到啦   
-后端访问密码默认为：giant123   
+
+访问后台管理系统，添加数据：http://xxx.xxx.xxx.xx:8818/admin/management/  访问密码默认为：giant123  
 
 > 注意，docker方式部署直接用sqlite做数据库，数据量不大，为你省去配置数据库的麻烦。
 
