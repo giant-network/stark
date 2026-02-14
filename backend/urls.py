@@ -31,7 +31,8 @@ admin.site.index_title = u'Stark Dashboard'
 urlpatterns = [
     url(r'^admin/management/', admin.site.urls),
     path('api/card/', include('apps.card.urls'), name="card"),
-    path('api/tag/', include('apps.tag.urls'), name="tag")
+    path('api/tag/', include('apps.tag.urls'), name="tag"),
+    path('api/config/', include('apps.config.urls'), name="config"),  # 新增配置接口
 ]
 
 if settings.DEBUG:

@@ -39,9 +39,10 @@
 
 .logo {
   position: relative;
-  width: 166px;
+  min-width: 166px;
+  width: auto;
   height: @layout-header-height;
-  overflow: hidden;
+  overflow: visible;
   line-height: @layout-header-height;
   transition: all 0.3s;
   img {
@@ -55,7 +56,8 @@
     color: #fff;
     font-weight: 400;
     font-size: 16px;
-    vertical-align: top;
+    vertical-align: middle;
+    white-space: nowrap;
   }
 }
 

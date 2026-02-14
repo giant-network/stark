@@ -1,0 +1,52 @@
+# Git 相关
+.git
+.gitignore
+.gitattributes
+
+# 前端源代码（只需要编译后的 dist 目录）
+frontend/src
+frontend/node_modules
+frontend/config
+frontend/mock
+frontend/public
+frontend/.umi
+frontend/.eslintrc.js
+frontend/.prettierrc.js
+frontend/.stylelintrc.js
+frontend/package.json
+frontend/package-lock.json
+frontend/.editorconfig
+
+# Python 相关
+backend/__pycache__
+backend/**/__pycache__
+backend/**/*.pyc
+backend/**/*.pyo
+backend/**/*.pyd
+backend/.Python
+backend/env
+backend/venv
+backend/ENV
+backend/**/*.egg-info
+backend/.pytest_cache
+
+# IDE 相关
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# 文档（可选，如果想减小镜像体积）
+docs
+README.md
+*.md
+
+# 其他
+.dockerignore
+Dockerfile
+docker-compose.yml
+*.log
+.env
+.env.local
