@@ -69,8 +69,24 @@ export default {
   theme: {
     'primary-color': primaryColor,
   },
+  // 开发服务器配置
+  devServer: {
+    port: 8001,  // 前端开发服务器端口，避免与后端 8000 冲突
+  },
   proxy: {
     '/api/': {
+      target: configs[APP_ENV].API_SERVER,
+      changeOrigin: true,
+    },
+    '/media/': {
+      target: configs[APP_ENV].API_SERVER,
+      changeOrigin: true,
+    },
+    '/static/': {
+      target: configs[APP_ENV].API_SERVER,
+      changeOrigin: true,
+    },
+    '/admin/': {
       target: configs[APP_ENV].API_SERVER,
       changeOrigin: true,
     },

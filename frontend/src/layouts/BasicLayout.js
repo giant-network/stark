@@ -43,11 +43,19 @@ const query = {
 };
 
 class BasicLayout extends React.Component {
+  state = {
+    siteTitle: 'Stark',
+    siteHeader: 'Stark Dashboard',
+  };
+
   componentDidMount() {
     const {
       dispatch,
       route: { routes, path, authority },
     } = this.props;
+
+    // 获取网站配置
+    this.fetchSiteConfig();
 
      dispatch({
       type: 'user/fetchCurrent',
@@ -60,6 +68,24 @@ class BasicLayout extends React.Component {
       payload: { routes, path, authority },
     });
   }
+
+  // 获取网站配置
+  fetchSiteConfig = () => {
+    fetch('/api/config/site/')
+      .then(response => response.json())
+      .then(data => {
+        if (data.title || data.header) {
+          this.setState({
+            siteTitle: data.title || 'Stark',
+            siteHeader: data.header || 'Stark Dashboard',
+          });
+        }
+      })
+      .catch(error => {
+        console.error('获取网站配置失败:', error);
+        // 使用默认值，已在 state 中设置
+      });
+  };
 
   getContext() {
     const { location, breadcrumbNameMap } = this.props;
@@ -119,6 +145,7 @@ class BasicLayout extends React.Component {
             onCollapse={this.handleMenuCollapse}
             menuData={menuData}
             isMobile={isMobile}
+            siteHeader={this.state.siteHeader}
             {...this.props}
           />
         )}
@@ -133,6 +160,7 @@ class BasicLayout extends React.Component {
             handleMenuCollapse={this.handleMenuCollapse}
             logo={logo}
             isMobile={isMobile}
+            siteHeader={this.state.siteHeader}
             {...this.props}
           />
           <Content className={styles.content} style={contentStyle}>
@@ -144,7 +172,7 @@ class BasicLayout extends React.Component {
     );
     return (
       <React.Fragment>
-        <DocumentTitle title={'Stark'}>
+        <DocumentTitle title={this.state.siteTitle}>
           <ContainerQuery query={query}>
             {params => (
               <Context.Provider value={this.getContext()}>

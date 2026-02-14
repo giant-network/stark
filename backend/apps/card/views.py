@@ -3,6 +3,7 @@
 # Created on 2019/3/28, by felix
 #
 
+import json
 from django.db.models import Q
 
 from apps.card.models import Card, Menu
@@ -49,12 +50,14 @@ class CardViewSet(BaseViewSet):
         return Response(serializer.data)
 
     @list_route(methods=['GET'], url_path='search')
-    def fetch_card_menus(self, request, *args, **kwargs):
+    def search_cards(self, request, *args, **kwargs):
         """
-        搜索菜单项
+        搜索卡片
         """
-
         q = request.query_params.get('q', '')
+        
+        # 限制搜索关键词长度，防止性能问题
+        q = q[:100] if q else ''
 
         cards = Card.objects.filter(Q(name__icontains=q) | Q(description__icontains=q), is_deleted=False).order_by('-weight', '-id')
         serializer = CardSerializer(cards, many=True, context={"request": request})
@@ -63,17 +66,25 @@ class CardViewSet(BaseViewSet):
     @list_route(methods=['GET'], url_path='collect')
     def fetch_card_collected(self, request, *args, **kwargs):
         """
-        根据ID搜索菜单项
+        根据ID批量查询卡片
         """
         ids = request.query_params.get('ids', '')
-        ids_value = None
+        ids_list = []
 
+        # 修复安全漏洞：使用 json.loads 替代 eval
         try:
-            ids_value = eval(ids)
-        except Exception as e:
-            ids_value = []
-        finally:
-            ids_list = ids_value if type(ids_value) == list else []
+            ids_value = json.loads(ids)
+            # 确保是列表类型
+            if isinstance(ids_value, list):
+                # 过滤并转换为整数列表
+                ids_list = [int(i) for i in ids_value if str(i).isdigit() or isinstance(i, int)]
+        except (json.JSONDecodeError, ValueError, TypeError):
+            # 如果解析失败，尝试兼容旧格式（逗号分隔的字符串）
+            if ids and isinstance(ids, str):
+                try:
+                    ids_list = [int(i.strip()) for i in ids.split(',') if i.strip().isdigit()]
+                except (ValueError, AttributeError):
+                    ids_list = []
 
         cards = Card.objects.filter(id__in=ids_list, is_deleted=False).order_by('-weight', '-id')
         serializer = CardSerializer(cards, many=True, context={"request": request})

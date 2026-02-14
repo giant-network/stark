@@ -6,24 +6,9 @@ import styles from './index.less';
 import { title } from '../../defaultSettings';
 
 export default class TopNavHeader extends PureComponent {
-  state = {
-    maxWidth: undefined,
-  };
-
-  static getDerivedStateFromProps(props) {
-    return {
-      maxWidth:
-        (props.contentWidth === 'Fixed' && window.innerWidth > 1200 ? 1200 : window.innerWidth) -
-        280 -
-        120 -
-        40,
-    };
-  }
-
   render() {
-    const { theme, contentWidth, menuData, logo } = this.props;
-    const { maxWidth } = this.state;
-    const flatMenuKeys = getFlatMenuKeys(menuData);
+    const { theme, contentWidth, logo, siteHeader } = this.props;
+    
     return (
       <div className={`${styles.head} ${theme === 'light' ? styles.light : ''}`}>
         <div
@@ -33,17 +18,11 @@ export default class TopNavHeader extends PureComponent {
           className={`${styles.main} ${contentWidth === 'Fixed' ? styles.wide : ''}`}
         >
           <div className={styles.left}>
-            <div className={styles.logo} key="logo" id="logo">
+            <div className={styles.logo} key="logo">
               <Link to="/">
                 <img src={logo} alt="logo" />
-                <h1>{title}</h1>
+                <h1>{siteHeader || title}</h1>
               </Link>
-            </div>
-            <div
-              style={{
-                maxWidth,
-              }}
-            >
             </div>
           </div>
           <RightContent {...this.props} />

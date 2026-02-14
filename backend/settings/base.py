@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apps.card',
-    'apps.tag'
+    'apps.tag',
+    'apps.config',  # 新增配置应用
 ]
 
 MIDDLEWARE = [

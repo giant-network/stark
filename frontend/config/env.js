@@ -1,7 +1,7 @@
 const configs = {
   // 测试环境
   test: {
-    API_SERVER: 'http://127.0.0.1:8080',
+    API_SERVER: 'http://127.0.0.1:8000',  // 本地开发：后端 Django 端口
   },
 
   // dev环境
